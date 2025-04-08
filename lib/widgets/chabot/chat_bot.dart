@@ -58,10 +58,16 @@ class _ChatBotState extends State<ChatBot> {
                 ],
               ),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Expanded(
                     child: TextField(
                       controller: _messageController,
+                      maxLines: null,
+                      minLines: 1,
+                      maxLength: 1000,
+                      textInputAction: TextInputAction.newline,
+                      keyboardType: TextInputType.multiline,
                       decoration: InputDecoration(
                         hintText: 'Escribe tu mensaje...',
                         border: OutlineInputBorder(
@@ -73,6 +79,10 @@ class _ChatBotState extends State<ChatBot> {
                         contentPadding: const EdgeInsets.symmetric(
                           horizontal: 16,
                           vertical: 8,
+                        ),
+                        counterText: '',
+                        constraints: BoxConstraints(
+                          maxHeight: 5 * 24.0, // 5 líneas de texto
                         ),
                       ),
                     ),
