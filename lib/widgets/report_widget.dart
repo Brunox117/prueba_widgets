@@ -7,41 +7,44 @@ class ReportWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final textStyles = Theme.of(context).textTheme;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
               const Icon(Icons.sim_card_alert_outlined),
+              const SizedBox(width: 8),
               Text(
                 'Reporte: 13487',
-                style: textStyles.bodyMedium,
+                style: textStyles.titleMedium,
               )
             ],
           ),
           const SizedBox(
-            height: 10,
+            height: 20,
           ),
-          const Row(
-            children: [
-              Text(
-                'Detalle: ',
-              ),
-            ],
+          Text(
+            'Detalle:',
+            style: textStyles.titleSmall,
           ),
           const SizedBox(
-            height: 10,
+            height: 15,
           ),
           const ReportContainers(title: 'Reporte: ', subtitle: '09333'),
+          const SizedBox(height: 10),
           const ReportContainers(
               title: 'Conductor: ',
               subtitle: 'LLUVIA DEL ROCIO GARZA MELENDEZ'),
+          const SizedBox(height: 10),
           const ReportContainers(
               title: 'Ubicación: ',
               subtitle:
                   'Chihuahua Bachiniva Francisco I. Madero División del Norte Carretera Picacho-Ajusco'),
+          const SizedBox(height: 10),
           const ReportContainers(
               title: 'Tipo de siniestro: ', subtitle: 'Accidente vial'),
+          const SizedBox(height: 10),
           const ReportContainers(
               title: 'Ajustador: ', subtitle: 'SANCHEZ ESPINOZA LENIN'),
         ],
@@ -63,7 +66,7 @@ class ReportContainers extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
