@@ -81,7 +81,7 @@ class _ChatBotState extends State<ChatBot> {
                           vertical: 8,
                         ),
                         counterText: '',
-                        constraints: BoxConstraints(
+                        constraints: const BoxConstraints(
                           maxHeight: 5 * 24.0, // 5 líneas de texto
                         ),
                       ),

@@ -70,13 +70,6 @@ class _DatosGeneralesFormState extends State<DatosGeneralesForm> {
     return null;
   }
 
-  String? _validateFechaNacimiento(DateTime? value) {
-    if (value == null) {
-      return 'Por favor, selecciona tu fecha de nacimiento';
-    }
-    return null;
-  }
-
   _submitForm() {
     if (_formKey.currentState!.validate()) {
       showDialog(

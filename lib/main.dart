@@ -13,6 +13,7 @@ import 'package:prueba_widgets/widgets/llamar_ajustador_widget.dart';
 import 'package:prueba_widgets/widgets/llamar_asegurado.dart';
 import 'package:prueba_widgets/widgets/llamar_cabina_widget.dart';
 import 'package:prueba_widgets/widgets/lugar_siniestro_widget.dart';
+import 'package:prueba_widgets/widgets/map/map_widget.dart';
 import 'package:prueba_widgets/widgets/marcar_arribo_widget.dart';
 import 'package:prueba_widgets/widgets/marcar_termino.dart';
 import 'package:prueba_widgets/widgets/report_widget.dart';
@@ -36,6 +37,7 @@ class MainApp extends StatelessWidget {
               child: Column(
                 children: [
                   ArriboAjustador(),
+                  MapWidget(),
                   ChatBot(),
                   AjustadorWidget(),
                   ClienteWidget(),
