@@ -15,7 +15,7 @@ class MainApp extends StatelessWidget {
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
-              children: [ReportWidget()],
+              children: [ReportWidget(reporte: '89992',)],
             ),
           ),
         ),

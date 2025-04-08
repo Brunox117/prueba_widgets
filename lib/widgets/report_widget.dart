@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
 
 class ReportWidget extends StatelessWidget {
-  const ReportWidget({super.key});
+  final String? reporte;
+  final String? conductor;
+  final String? ubicacion;
+  final String? tipoSiniestro;
+  final String? ajustador;
+  const ReportWidget(
+      {super.key,
+      this.reporte,
+      this.conductor,
+      this.ubicacion,
+      this.tipoSiniestro,
+      this.ajustador});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +27,7 @@ class ReportWidget extends StatelessWidget {
               const Icon(Icons.sim_card_alert_outlined),
               const SizedBox(width: 8),
               Text(
-                'Reporte: 13487',
+                'Reporte: ${reporte ?? '13487'}',
                 style: textStyles.titleMedium,
               )
             ],
@@ -31,22 +42,29 @@ class ReportWidget extends StatelessWidget {
           const SizedBox(
             height: 15,
           ),
-          const ReportContainers(title: 'Reporte: ', subtitle: '09333'),
+          ReportContainers(title: 'Reporte: ', subtitle: reporte ?? '13487'),
           const SizedBox(height: 10),
-          const ReportContainers(
+          ReportContainers(
               title: 'Conductor: ',
-              subtitle: 'LLUVIA DEL ROCIO GARZA MELENDEZ'),
+              subtitle: (conductor == null)
+                  ? 'LLUVIA DEL ROCIO GARZA MELENDEZ'
+                  : conductor!),
           const SizedBox(height: 10),
-          const ReportContainers(
+          ReportContainers(
               title: 'Ubicación: ',
+              subtitle: (ubicacion == null)
+                  ? 'Chihuahua Bachiniva Francisco I. Madero División del Norte Carretera Picacho-Ajusco'
+                  : ubicacion!),
+          const SizedBox(height: 10),
+          ReportContainers(
+              title: 'Tipo de siniestro: ',
               subtitle:
-                  'Chihuahua Bachiniva Francisco I. Madero División del Norte Carretera Picacho-Ajusco'),
+                  (tipoSiniestro == null) ? 'Accidente vial' : tipoSiniestro!),
           const SizedBox(height: 10),
-          const ReportContainers(
-              title: 'Tipo de siniestro: ', subtitle: 'Accidente vial'),
-          const SizedBox(height: 10),
-          const ReportContainers(
-              title: 'Ajustador: ', subtitle: 'SANCHEZ ESPINOZA LENIN'),
+          ReportContainers(
+              title: 'Ajustador: ',
+              subtitle:
+                  (ajustador == null) ? 'SANCHEZ ESPINOZA LENIN' : ajustador!),
         ],
       ),
     );
