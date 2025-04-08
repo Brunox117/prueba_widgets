@@ -61,21 +61,31 @@ class ReportContainers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [Text(title)],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              subtitle,
-              overflow: TextOverflow.ellipsis,
+            Row(
+              children: [
+                Text(title, style: Theme.of(context).textTheme.titleMedium)
+              ],
+            ),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Text(
+                    subtitle,
+                  ),
+                )
+              ],
             )
           ],
-        )
-      ],
+        ),
+      ),
     );
   }
 }
