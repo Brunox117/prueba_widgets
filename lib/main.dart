@@ -4,8 +4,11 @@ import 'package:prueba_widgets/widgets/ajustador_widget.dart';
 import 'package:prueba_widgets/widgets/arribo_ajustador.dart';
 import 'package:prueba_widgets/widgets/cliente_widget.dart';
 import 'package:prueba_widgets/widgets/llamar_ajustador_widget.dart';
+import 'package:prueba_widgets/widgets/llamar_asegurado.dart';
 import 'package:prueba_widgets/widgets/llamar_cabina_widget.dart';
+import 'package:prueba_widgets/widgets/lugar_siniestro_widget.dart';
 import 'package:prueba_widgets/widgets/marcar_arribo_widget.dart';
+import 'package:prueba_widgets/widgets/marcar_termino.dart';
 import 'package:prueba_widgets/widgets/report_widget.dart';
 
 void main() {
@@ -18,6 +21,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      // theme: ThemeData(colorSchemeSeed: Colors.blue),
       home: Scaffold(
         body: SafeArea(
           child: SingleChildScrollView(
@@ -31,7 +35,10 @@ class MainApp extends StatelessWidget {
                   ActualizarUbicacion(),
                   LlamarAjustadorWidget(),
                   LlamarCabinaWidget(),
+                  LlamarAsegurado(),
                   MarcarArriboWidget(),
+                  MarcarTermino(),
+                  LugarSiniestroWidget(),
                   ReportWidget(
                     reporte: '89992',
                   ),

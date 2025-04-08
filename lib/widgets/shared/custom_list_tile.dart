@@ -10,7 +10,7 @@ class CustomListTile extends StatelessWidget {
     super.key,
     required this.leadingIcon,
     required this.title,
-    this.onPressed,
+    required this.onPressed,
   });
 
   @override
@@ -36,4 +36,4 @@ class CustomListTile extends StatelessWidget {
       ),
     );
   }
-} 
+}

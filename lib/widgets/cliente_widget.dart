@@ -2,30 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:prueba_widgets/widgets/shared/custom_card.dart';
 
 class ClienteWidget extends StatelessWidget {
-  const ClienteWidget({super.key});
+  final String? nombreCliente;
+  final String? descricpcionCarro;
+  const ClienteWidget({super.key, this.nombreCliente, this.descricpcionCarro});
 
   @override
   Widget build(BuildContext context) {
     return CustomCard(
         child: Column(
       children: [
-        Text('Conductor: '),
+        const Text('Conductor: '),
         Row(
           children: [
-            Icon(Icons.person),
-            SizedBox(
+            const Icon(Icons.person),
+            const SizedBox(
               width: 10,
             ),
-            Text('LLUVIA DEL ROCIO GARZA MELENDEZ'),
+            Text((nombreCliente == null)
+                ? 'LLUVIA DEL ROCIO GARZA MELENDEZ'
+                : nombreCliente!),
           ],
         ),
         Row(
           children: [
-            Icon(Icons.car_crash),
-            SizedBox(
+            const Icon(Icons.car_crash),
+            const SizedBox(
               width: 10,
             ),
-            Text('FIAT PALIO SEDAN C/A AC CO BLANCO'),
+            Text((descricpcionCarro == null)
+                ? 'FIAT PALIO SEDAN C/A AC CO BLANCO'
+                : descricpcionCarro!),
           ],
         ),
       ],
