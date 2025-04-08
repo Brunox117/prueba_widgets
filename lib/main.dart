@@ -3,7 +3,10 @@ import 'package:prueba_widgets/widgets/actualizar_ubicacion.dart';
 import 'package:prueba_widgets/widgets/ajustador_widget.dart';
 import 'package:prueba_widgets/widgets/arribo_ajustador.dart';
 import 'package:prueba_widgets/widgets/cliente_widget.dart';
+import 'package:prueba_widgets/widgets/curp_form.dart';
 import 'package:prueba_widgets/widgets/datos_contacto_form.dart';
+import 'package:prueba_widgets/widgets/datos_domicilio_form.dart';
+import 'package:prueba_widgets/widgets/datos_generales_form.dart';
 import 'package:prueba_widgets/widgets/image_gallery.dart';
 import 'package:prueba_widgets/widgets/llamar_ajustador_widget.dart';
 import 'package:prueba_widgets/widgets/llamar_asegurado.dart';
@@ -42,6 +45,9 @@ class MainApp extends StatelessWidget {
                   MarcarTermino(),
                   LugarSiniestroWidget(),
                   DatosContactoForm(),
+                  DatosGeneralesForm(),            
+                  DatosDomicilioForm(),
+                  CurpForm(),
                   ImageGallery(),
                   ReportWidget(
                     reporte: '89992',
