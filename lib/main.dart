@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:prueba_widgets/widgets/actualizar_ubicacion.dart';
 import 'package:prueba_widgets/widgets/ajustador_widget.dart';
 import 'package:prueba_widgets/widgets/arribo_ajustador.dart';
+import 'package:prueba_widgets/widgets/chat_bot.dart';
 import 'package:prueba_widgets/widgets/cliente_widget.dart';
 import 'package:prueba_widgets/widgets/curp_form.dart';
 import 'package:prueba_widgets/widgets/datos_contacto_form.dart';
@@ -35,6 +36,7 @@ class MainApp extends StatelessWidget {
               child: Column(
                 children: [
                   ArriboAjustador(),
+                  ChatBot(),
                   AjustadorWidget(),
                   ClienteWidget(),
                   ActualizarUbicacion(),
