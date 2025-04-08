@@ -1,94 +1,68 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CustomFormField extends StatelessWidget {
-  final bool isTopField; 
-  final bool isBottomField;
-  final String? label;
-  final String? hint;
-  final TextStyle? hintStyle;
-  final String? errorMessage;
-  final bool obscureText;
-  final TextInputType? keyboardType;
-  final int maxLines;
-  final String initialValue;
-  final Function(String)? onChanged;
-  final Function(String)? onFieldSubmitted;
+  final String labelText;
+  final String? hintText;
+  final TextEditingController? controller;
   final String? Function(String?)? validator;
-  final Color? bakcGroundColor;
+  final TextInputType? keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
+  final IconData? prefixIcon;
+  final bool obscureText;
+  final AutovalidateMode? autovalidateMode;
 
-  const CustomFormField(
-      {super.key,
-      this.isTopField = false,
-      this.isBottomField = false,
-      this.label,
-      this.hint,
-      this.errorMessage,
-      this.obscureText = false,
-      this.keyboardType = TextInputType.text,
-      this.maxLines = 1,
-      this.initialValue = '',
-      this.onChanged,
-      this.onFieldSubmitted,
-      this.validator,
-      this.hintStyle,
-      this.bakcGroundColor = const Color.fromARGB(255, 238, 238, 255)});
+  const CustomFormField({
+    super.key,
+    required this.labelText,
+    this.hintText,
+    this.controller,
+    this.validator,
+    this.keyboardType,
+    this.inputFormatters,
+    this.prefixIcon,
+    this.obscureText = false,
+    this.autovalidateMode = AutovalidateMode.onUserInteraction,
+  });
 
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
 
-    final border = OutlineInputBorder(
-        borderSide: const BorderSide(color: Colors.transparent),
-        borderRadius: BorderRadius.circular(40));
-
-    const borderRadius = Radius.circular(15);
-
-    return Container(
-      padding: const EdgeInsets.only(bottom: 8),
-      decoration: BoxDecoration(
-          color: bakcGroundColor,
-          borderRadius: BorderRadius.only(
-            topLeft: isTopField ? borderRadius : Radius.zero,
-            topRight: isTopField ? borderRadius : Radius.zero,
-            bottomLeft: isBottomField ? borderRadius : Radius.zero,
-            bottomRight: isBottomField ? borderRadius : Radius.zero,
-          ),
-          boxShadow: [
-            if (isBottomField)
-              BoxShadow(
-                  color: Colors.black.withOpacity(0.06),
-                  blurRadius: 5,
-                  offset: const Offset(0, 3))
-          ]),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextFormField(
-        onChanged: onChanged,
-        onFieldSubmitted: onFieldSubmitted,
+        controller: controller,
         validator: validator,
-        obscureText: obscureText,
         keyboardType: keyboardType,
-        style: const TextStyle(fontSize: 15, color: Colors.black54),
-        maxLines: maxLines,
-        initialValue: initialValue,
+        inputFormatters: inputFormatters,
+        obscureText: obscureText,
+        autovalidateMode: autovalidateMode,
         decoration: InputDecoration(
-          floatingLabelBehavior: maxLines > 1
-              ? FloatingLabelBehavior.always
-              : FloatingLabelBehavior.auto,
-          floatingLabelStyle: const TextStyle(
-              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15),
-          enabledBorder: border,
-          focusedBorder: border,
-          errorBorder: border.copyWith(
-              borderSide: const BorderSide(color: Colors.transparent)),
-          focusedErrorBorder: border.copyWith(
-              borderSide: const BorderSide(color: Colors.transparent)),
-          isDense: true,
-          label: label != null ? Text(label!) : null,
-          hintText: hint,
-          hintStyle: hintStyle,
-          errorText: errorMessage,
-          focusColor: colors.primary,
+          labelText: labelText,
+          hintText: hintText,
+          prefixIcon: prefixIcon != null ? Icon(prefixIcon, color: colors.primary) : null,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: colors.primary, width: 2.0),
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: colors.onSurface.withOpacity(0.3)),
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: colors.error),
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: colors.error, width: 2.0),
+            borderRadius: BorderRadius.circular(10.0),
+          ),
         ),
       ),
     );
   }
-}
+} 
