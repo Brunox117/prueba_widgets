@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'dart:io';
+import 'dart:typed_data';
 
 class ImageGallery extends StatefulWidget {
   const ImageGallery({super.key});
@@ -45,17 +45,34 @@ class _ImageGalleryState extends State<ImageGallery> {
               scrollDirection: Axis.horizontal,
               itemCount: imagesToShow.length,
               itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.file(
-                      File(imagesToShow[index].path),
-                      width: 200,
-                      height: 200,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                return FutureBuilder<Uint8List>(
+                  future: imagesToShow[index].readAsBytes(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.memory(
+                            snapshot.data!,
+                            width: 200,
+                            height: 200,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      );
+                    } else if (snapshot.hasError) {
+                      return const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Center(child: Icon(Icons.error)),
+                      );
+                    } else {
+                      return const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Center(child: CircularProgressIndicator()),
+                      );
+                    }
+                  },
                 );
               },
             ),
